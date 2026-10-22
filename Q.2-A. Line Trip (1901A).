@@ -1,0 +1,34 @@
+//Tc: O(2N). Sc: O(N)
+
+#include<bits/stdc++.h> 
+using namespace std; 
+ 
+int main(){
+    int t; 
+    cin>> t; 
+    
+    while(t--){
+        long long n, x; 
+        cin>>n>>x; 
+        vector<long long> Pointer_arr; 
+        for(int i = 0; i<n; i++){
+            long long point; 
+            cin>> point; 
+            
+            Pointer_arr.push_back(point); 
+        }
+        Pointer_arr.push_back(x); 
+        n = Pointer_arr.size(); 
+        
+        long long max_dis_betn_points = Pointer_arr[0]; 
+        for(int i = 1; i<n; i++){
+            if(i == n-1){
+                max_dis_betn_points = max(max_dis_betn_points, 2* (Pointer_arr[i] - Pointer_arr[i-1]));
+                }else{
+                    max_dis_betn_points = max(max_dis_betn_points, Pointer_arr[i] - Pointer_arr[i-1]);
+                }
+            }
+            cout<<max_dis_betn_points<<endl; 
+        }
+        return 0; 
+}
